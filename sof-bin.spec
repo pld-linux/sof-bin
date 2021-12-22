@@ -1,7 +1,7 @@
 Summary:	Topology binaries for the Sound Open Firmware
 Name:		sof-bin
 Version:	2.0
-Release:	0.1
+Release:	1
 License:	BSD/BSD-like/ISC
 Group:		Base/Kernel
 Source0:	https://github.com/thesofproject/sof-bin/archive/v%{version}/%{name}-%{version}.tar.gz
