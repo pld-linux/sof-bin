@@ -1,15 +1,11 @@
-
-%define		sof_ver		2.0
-%define		sof_ver_pkg	v%{sof_ver}.x
-
 Summary:	Topology binaries for the Sound Open Firmware
 Name:		sof-bin
-Version:	%{sof_ver}
-Release:	2
+Version:	2.2.2
+Release:	1
 License:	BSD/BSD-like/ISC
 Group:		Base/Kernel
-Source0:	https://github.com/thesofproject/sof-bin/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	8d06ed4a1fba5fd77bb49bd35ddce757
+Source0:	https://github.com/thesofproject/sof-bin/releases/download/v%{version}/%{name}-v%{version}.tar.gz
+# Source0-md5:	7efa596bef8623cccda5904b5676c09a
 URL:		https://github.com/thesofproject/sof-bin
 BuildRequires:	alsa-lib
 BuildRequires:	alsa-utils
@@ -31,10 +27,10 @@ BuildArch:	noarch
 Sound Open Firmware.
 
 %prep
-%setup -q
+%setup -q -n %{name}-v%{version}
 mkdir -p firmware/intel/sof
-mv %{sof_ver_pkg}/sof-v%{version}/* firmware/intel/sof
-mv %{sof_ver_pkg}/sof-tplg-v%{version} firmware/intel/sof-tplg
+%{__mv} sof-v%{version}/* firmware/intel/sof
+%{__mv} sof-tplg-v%{version} firmware/intel/sof-tplg
 
 %build
 # SST topology files (not SOF related, but it's a Intel hw support
@@ -46,7 +42,7 @@ alsatplg -c /usr/share/alsa/topology/hda-dsp/skl_hda_dsp_generic-tplg.conf \
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{/lib/firmware/intel,%{_bindir}}
 
-cp -ra %{sof_ver_pkg}/tools-v%{version}/* $RPM_BUILD_ROOT%{_bindir}
+cp -ra tools-v%{version}/* $RPM_BUILD_ROOT%{_bindir}
 cp -ra firmware/* $RPM_BUILD_ROOT/lib/firmware/
 
 %clean
@@ -62,6 +58,3 @@ rm -rf $RPM_BUILD_ROOT
 /lib/firmware/*.bin
 /lib/firmware/intel/sof
 /lib/firmware/intel/sof-tplg
-# exclude debug data
-%exclude /lib/firmware/intel/sof/*.ldc
-%exclude /lib/firmware/intel/sof/*/*.ldc
