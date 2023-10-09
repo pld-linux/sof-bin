@@ -1,7 +1,7 @@
 Summary:	Topology binaries for the Sound Open Firmware
 Name:		sof-bin
 Version:	2023.09
-Release:	1
+Release:	2
 License:	BSD/BSD-like/ISC
 Group:		Base/Kernel
 Source0:	https://github.com/thesofproject/sof-bin/releases/download/v%{version}/%{name}-%{version}.tar.gz
@@ -28,7 +28,7 @@ Sound Open Firmware.
 
 %prep
 %setup -q
-mkdir -p firmware/intel/sof
+mkdir -p firmware/intel
 %{__mv} sof firmware/intel/sof
 %{__mv} sof-ace-tplg firmware/intel/sof-ace-tplg
 %{__mv} sof-ipc4 firmware/intel/sof-ipc4
