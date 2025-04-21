@@ -1,11 +1,11 @@
 Summary:	Topology binaries for the Sound Open Firmware
 Name:		sof-bin
-Version:	2024.09.2
+Version:	2025.01.1
 Release:	1
 License:	BSD/BSD-like/ISC
 Group:		Base/Kernel
 Source0:	https://github.com/thesofproject/sof-bin/releases/download/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	b05830da1b3fb58dd09add332b4a6eb0
+# Source0-md5:	63d922ae15ff4d8f1b415d0115fe6e0d
 URL:		https://github.com/thesofproject/sof-bin
 BuildRequires:	alsa-lib
 BuildRequires:	alsa-utils
